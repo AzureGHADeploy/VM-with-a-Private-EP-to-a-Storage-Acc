@@ -3,25 +3,23 @@ on: [push]
 name: AzureARMDeploy
 
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4 # It's good practice to use the latest stable version
 
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Checkout source code
-        uses: actions/checkout@v2
-
-      - name: Deploy ARM Template
-        uses: azure/CLI@v2
-        with:
-          inlineScript: |
-            az deployment group create \
-            --name StorageAccountDeployment \
-            --resource-group GHActionDeploy \
-            --template-file $GITHUB_WORKSPACE/armtemplates/storageaccount.json \
-            --parameters storageAccountType=Standard_GRS
+    - name: Deploy ARM Template
+      uses: azure/CLI@v2
+      with:
+        inlineScript: |
+          az deployment group create \
+          --name StorageAccountDeployment \
+          --resource-group GHActionDeploy \
+          --template-file $GITHUB_WORKSPACE/armtemplates/storageaccount.json \
+          --parameters storageAccountType=Standard_GRS
