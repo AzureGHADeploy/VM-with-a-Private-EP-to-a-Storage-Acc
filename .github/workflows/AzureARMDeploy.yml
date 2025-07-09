@@ -3,32 +3,25 @@ on: [push]
 name: AzureARMDeploy
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout source code
-      uses: actions/checkout@v4
 
-    - name: List files in workspace for debugging
-      run: |
-        echo "Listing files in GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-        ls -R $GITHUB_WORKSPACE
-        echo "Current working directory:"
-        pwd
-        echo "Listing files in current working directory:"
-        ls -R . # List recursively in the current directory
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
 
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Deploy ARM Template
-      uses: azure/CLI@v2
-      with:
-        inlineScript: |
-          az deployment group create \
-          --name StorageAccountDeployment \
-          --resource-group GHActionDeploy \
-          --template-file armtemplates/storageaccount.json \
-          --parameters storageAccountType=Standard_GRS
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Deploy ARM Template
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az deployment group create \
+            --name StorageAccountDeployment \
+            --resource-group GHActionDeploy \
+            --template-file armtemplates/storageaccount.json \
+            --parameters storageAccountType=Standard_GRS
