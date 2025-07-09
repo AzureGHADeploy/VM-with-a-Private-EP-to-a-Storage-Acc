@@ -23,5 +23,5 @@ jobs:
             az deployment group create \
             --name StorageAccountDeployment \
             --resource-group GHActionDeploy \
-            --template-file armtemplates/storageaccount.json \
+            --template-file $GITHUB_WORKSPACE/armtemplates/storageaccount.json \
             --parameters storageAccountType=Standard_GRS
