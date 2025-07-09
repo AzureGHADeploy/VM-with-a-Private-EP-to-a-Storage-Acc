@@ -37,7 +37,7 @@
         },
         "kind": "StorageV2",
         "properties": { 
-          "accessTier": "Cold",
+          "accessTier": "Cool",
           "supportsHttpsTrafficOnly": true
         }
       }
