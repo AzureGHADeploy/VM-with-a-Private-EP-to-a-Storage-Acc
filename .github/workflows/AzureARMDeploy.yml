@@ -1,22 +1,21 @@
-on: [push]
+name: Delete Azure Storage Account
 
-name: AzureARMDeploy
+on:
+  workflow_dispatch:  # Manual trigger
 
 jobs:
-  deploy:
+  delete:
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout source code
-      uses: actions/checkout@v4
 
-    - name: Login to Azure
+    steps:
+    - name: Azure Login
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Deploy ARM Template
-      uses: azure/arm-deploy@v1
-      with:
-        resourceGroupName: GHActionDeploy
-        template: ./armtemplates/storageaccount.json
-        deploymentName: StorageAccountDeployment-${{ github.run_number }} # Good practice for unique deployments
+    - name: Delete Storage Account
+      run: |
+        az storage account delete \
+          --name ghactiondeploystdsa \
+          --resource-group GHActionDeploy \
+          --yes
