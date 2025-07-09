@@ -7,7 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout source code
-      uses: actions/checkout@v4 # It's good practice to use the latest stable version
+      uses: actions/checkout@v4
+
+    - name: List files in workspace for debugging
+      run: |
+        echo "Listing files in GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+        ls -R $GITHUB_WORKSPACE
+        echo "Current working directory:"
+        pwd
+        echo "Listing files in current working directory:"
+        ls -R . # List recursively in the current directory
 
     - name: Login to Azure
       uses: azure/login@v1
