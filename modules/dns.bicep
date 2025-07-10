@@ -21,4 +21,15 @@ resource vnetlink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2024-06
     registrationEnabled: true
   }
 }
- 
+resource dnsrecord 'Microsoft.Network/privateDnsZones/A@2024-06-01' = {
+  name: 'privateEP.${privateDnsZoneName}'
+  parent: privateDnsZone
+  properties: {
+    ttl: 3600 // Time to live in seconds
+    ARecords: [
+      {
+        ipv4Address: '10.1.1.4'
+      }
+    ]
+  }
+} 
