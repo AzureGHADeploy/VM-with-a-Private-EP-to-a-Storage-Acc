@@ -13,6 +13,7 @@ resource privateDnsZone 'Microsoft.Network/privateDnsZones@2024-06-01' = {
 
 resource vnetlink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2024-06-01' = {
   name: '${virtualNetworkname}-link'
+  parent: privateDnsZone
   properties: {
     virtualNetwork: {
       id: virtualNetworkId
