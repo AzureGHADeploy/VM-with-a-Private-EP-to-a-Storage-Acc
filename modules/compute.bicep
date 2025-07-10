@@ -8,6 +8,9 @@ resource networkInterface 'Microsoft.Network/networkInterfaces@2021-02-01' = {
   name: 'myVMNIC'
   location: location
   properties: {
+    networkSecurityGroup: {
+      id: networksecurityGroup.id // Reference the network security group resource
+    }
     ipConfigurations: [
       {
         name: 'myVMIPConfig'
@@ -16,6 +19,42 @@ resource networkInterface 'Microsoft.Network/networkInterfaces@2021-02-01' = {
             id: subnetId // Reference the subnet ID from the network module
           }
           privateIPAllocationMethod: 'Dynamic'
+          publicIPAddress: {
+            id: publicIPAddress.id // Reference the public IP address resource
+          }
+        }
+      }
+    ]
+  }
+}
+
+resource publicIPAddress 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
+  name: 'myVMPublicIP'
+  location: location
+  sku: {
+    name: 'Standard'
+  }
+  properties: {
+    publicIPAllocationMethod: 'Static'
+  }
+}
+
+resource networksecurityGroup 'Microsoft.Network/networkSecurityGroups@2021-02-01' = {
+  name: 'myVMNSG'
+  location: location
+  properties: {
+    securityRules: [
+      {
+        name: 'AllowRDP'
+        properties: {
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          destinationPortRange: '3389'
+          sourceAddressPrefix: '*'
+          destinationAddressPrefix: '*'
+          access: 'Allow'
+          priority: 1000
+          direction: 'Inbound'
         }
       }
     ]
