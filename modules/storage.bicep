@@ -32,3 +32,4 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-02-01' = {
 
 
 output storageAccountId string = storageAccount.id
+output privateEndpointId string = privateEndpoint.id

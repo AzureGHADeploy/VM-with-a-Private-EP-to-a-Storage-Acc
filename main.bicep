@@ -28,3 +28,12 @@ module computeModule 'modules/compute.bicep' = {
     adminPassword: adminPassword
   }
 }
+module dnsModule 'modules/dns.bicep' = {
+  name: 'deployDns'
+  params: {
+    location: location
+    privateDnsZoneName: 'privatednszone.amir.com'
+    virtualNetworkname: networkModule.outputs.virtualNetworkname // Use the virtual network name from the network module
+    virtualNetworkId: networkModule.outputs.virtualNetworkId // Use the virtual network ID from the network module
+  }
+}
