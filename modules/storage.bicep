@@ -12,12 +12,12 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   properties: {}
 }
 
-resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2021-04-01' = {
-  name: 'testblob'
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2025-01-01' = {
+  name: 'default'
   parent: storageAccount
 }
-resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-04-01' = {
-  name: 'testcontainer'
+resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2025-01-01' = {
+  name: 'asd'
   parent: blobService
   properties: {
     publicAccess: 'None'
