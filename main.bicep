@@ -1,6 +1,8 @@
 // File: main.bicep
 
 param location string = resourceGroup().location
+@secure()
+param adminPassword string
 
 // Call the network module
 module networkModule 'modules/network.bicep' = {
@@ -22,5 +24,6 @@ module computeModule 'modules/compute.bicep' = {
   params: {
     location: location
     subnetId: networkModule.outputs.subnetId // Use the subnet ID from the network module
+    adminPassword: adminPassword
   }
 }
