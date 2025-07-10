@@ -15,6 +15,8 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2020-06-01' = {
         properties: {
           addressPrefix: '10.1.0.0/24'
         }
+      }
+      {
         name: 'PEPsubnet'
         properties: {
           addressPrefix: '10.1.1.0/24'
