@@ -9,3 +9,11 @@ module networkModule 'modules/network.bicep' = {
     location: location
   }
 }
+
+// Call the storage module
+module storageModule 'modules/storage.bicep' = {
+  name: 'deployStorage'
+  params: {
+    location: location
+  }
+}
