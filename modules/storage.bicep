@@ -27,7 +27,7 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
   }
 }
 
-    resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-02-01' = {
+resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-02-01' = {
   name: 'privateEndpointName'
   location: location
   properties: {
