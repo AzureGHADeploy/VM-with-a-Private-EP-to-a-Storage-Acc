@@ -22,7 +22,7 @@ resource vnetlink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2024-06
   }
 }
 resource dnsrecord 'Microsoft.Network/privateDnsZones/A@2024-06-01' = {
-  name: 'privateEP.${privateDnsZoneName}'
+  name: 'privateEP'
   parent: privateDnsZone
   properties: {
     ttl: 3600 // Time to live in seconds
