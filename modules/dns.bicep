@@ -2,7 +2,6 @@ param privateDnsZoneName string = 'privatelink.blob.${environment().suffixes.sto
 param virtualNetworkId string
 param virtualNetworkname string
 param storageaccountName string
-param storagePrivateIp string // The private IP address of the storage account's private endpoint
 
 
 // Note: Bicep cannot validate properties for 'Microsoft.Network/privateDnsZones@2021-02-01'.
@@ -30,7 +29,7 @@ resource aRecord 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
     ttl: 300
     aRecords: [
       {
-        ipv4Address: storagePrivateIp
+        ipv4Address: '10.1.1.4'
       }
     ]
   }
