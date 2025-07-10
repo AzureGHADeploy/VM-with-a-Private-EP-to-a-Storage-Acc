@@ -1,6 +1,7 @@
 param location string
 param adminUsername string = 'azureuser'
 param adminPassword string = 'P@ssw0rd1234!'
+param subnetId string
 
 resource networkInterface 'Microsoft.Network/networkInterfaces@2021-02-01' = {
   name: 'myVMNIC'
