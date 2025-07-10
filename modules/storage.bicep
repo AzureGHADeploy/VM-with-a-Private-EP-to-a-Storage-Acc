@@ -2,7 +2,7 @@ param location string
 
 param pepSubnetId string
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
   name: 'strgaccpep2463587tfvg'
   location: location
   sku: {
@@ -12,11 +12,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   properties: {}
 }
 
-resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2025-01-01' = {
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2024-01-01' = {
   name: 'default'
   parent: storageAccount
 }
-resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2025-01-01' = {
+resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2024-01-01' = {
   name: 'asd'
   parent: blobService
   properties: {
