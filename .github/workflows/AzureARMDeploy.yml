@@ -21,4 +21,4 @@ jobs:
         template: ./main.bicep # Path to your Bicep file
         deploymentName: PrivateENDP-${{ github.run_number }} # Good practice for unique deployments
         parameters: |
-          adminpassword=${{ secrets.ADMIN_PASSWORD }}
+          adminPassword=${{ secrets.ADMIN_PASSWORD }}

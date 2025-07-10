@@ -15,7 +15,7 @@ resource networkInterface 'Microsoft.Network/networkInterfaces@2021-02-01' = {
           subnet: {
             id: subnetId // Reference the subnet ID from the network module
           }
-          privateIPAllocationMethod: 'Static'
+          privateIPAllocationMethod: 'Dynamic'
         }
       }
     ]
