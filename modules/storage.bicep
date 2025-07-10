@@ -1,5 +1,6 @@
 param location string
-param subnetId string
+
+param pepSubnetId string
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'strgaccpep2463587tfvg'
@@ -15,7 +16,7 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-02-01' = {
   location: location
   properties: {
     subnet: {
-      id: subnetId
+      id: pepSubnetId
     }
     privateLinkServiceConnections: [
       {
