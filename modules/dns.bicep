@@ -1,4 +1,4 @@
-param privateDnsZoneName string = 'privatednszone.amir.com'
+param privateDnsZoneName string = 'privatelink.blob.core.windows.net'
 param virtualNetworkId string
 param virtualNetworkname string
 
@@ -18,18 +18,6 @@ resource vnetlink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2024-06
     virtualNetwork: {
       id: virtualNetworkId
     }
-    registrationEnabled: true
+    registrationEnabled: false
   }
 }
-resource dnsrecord 'Microsoft.Network/privateDnsZones/A@2024-06-01' = {
-  name: 'privateEP'
-  parent: privateDnsZone
-  properties: {
-    ttl: 3600 // Time to live in seconds
-    aRecords: [
-      {
-        ipv4Address: '10.1.1.4'
-      }
-    ]
-  }
-} 
