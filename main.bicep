@@ -35,3 +35,4 @@ module dnsModule 'modules/dns.bicep' = {
     virtualNetworkId: networkModule.outputs.virtualNetworkId // Use the virtual network ID from the network module
     storageaccountName: storageModule.outputs.storageaccountName // Use the storage account name from the storage module
 }
+} 
