@@ -49,3 +49,5 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-02-01' = {
 
 output storageAccountId string = storageAccount.id
 output privateEndpointId string = privateEndpoint.id
+output storageaccountName string = storageAccount.name
+output storagePrivateIp string = privateEndpoint.properties.networkInterfaces[0].properties.ipConfigurations[0].properties.privateIPAddress

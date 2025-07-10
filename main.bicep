@@ -33,5 +33,7 @@ module dnsModule 'modules/dns.bicep' = {
   params: {
     virtualNetworkname: networkModule.outputs.virtualNetworkname // Use the virtual network name from the network module
     virtualNetworkId: networkModule.outputs.virtualNetworkId // Use the virtual network ID from the network module
+    storageaccountName: storageModule.outputs.storageaccountName // Use the storage account name from the storage module
+    storagePrivateIp: storageModule.outputs.storagePrivateIp // Use the storage private IP from the storage module
   }
 }
