@@ -9,7 +9,10 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
     name: 'Standard_LRS'
   }
   kind: 'StorageV2'
-  properties: {}
+  properties: {
+    publicNetworkAccess: 'Disabled' // Disable public network access
+    allowBlobPublicAccess: false // Disable public access to blobs
+  }
 }
 
 resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2024-01-01' = {
