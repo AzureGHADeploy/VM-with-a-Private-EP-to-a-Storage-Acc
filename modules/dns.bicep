@@ -1,4 +1,4 @@
-param privateDnsZoneName string = 'privatelink.blob.${environment().suffixes.storage}'
+param privateDnsZoneName string = 'privatelink.blob.${environment().suffixes.storage}' // Default private DNS zone for Azure Blob Storage
 param virtualNetworkId string
 param virtualNetworkname string
 
