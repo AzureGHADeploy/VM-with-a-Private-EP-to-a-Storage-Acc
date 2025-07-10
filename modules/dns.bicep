@@ -34,3 +34,7 @@ resource aRecord 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
     ]
   }
 }
+
+
+
+output privateDnsZoneId string = privateDnsZone.id

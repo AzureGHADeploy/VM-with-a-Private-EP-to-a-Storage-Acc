@@ -1,5 +1,4 @@
 param location string
-
 param pepSubnetId string
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
@@ -45,6 +44,7 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-02-01' = {
     ]
   }
 }
+
 
 
 output storageAccountId string = storageAccount.id
