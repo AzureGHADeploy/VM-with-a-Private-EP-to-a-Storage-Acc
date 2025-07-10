@@ -26,7 +26,7 @@ resource dnsrecord 'Microsoft.Network/privateDnsZones/A@2024-06-01' = {
   parent: privateDnsZone
   properties: {
     ttl: 3600 // Time to live in seconds
-    ARecords: [
+    aRecords: [
       {
         ipv4Address: '10.1.1.4'
       }
