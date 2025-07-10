@@ -1,4 +1,4 @@
-param privateDnsZoneName string = 'privatelink.blob.core.windows.net'
+param privateDnsZoneName string = 'privatelink.blob.${environment().suffixes.storage}'
 param virtualNetworkId string
 param virtualNetworkname string
 
