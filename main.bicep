@@ -15,5 +15,6 @@ module storageModule 'modules/storage.bicep' = {
   name: 'deployStorage'
   params: {
     location: location
+    subnetId: networkModule.outputs.subnetId
   }
 }
