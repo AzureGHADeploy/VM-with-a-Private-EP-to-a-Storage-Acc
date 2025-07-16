@@ -69,7 +69,7 @@ jobs:
           deploymentName: PrivateENDP-${{ github.run_number }} 
 ```
 
-📦 Bicep Parameters
+## 📦 Bicep Parameters
 The following parameters are used in main.bicep:
 
 | Parameter            | Description             | Source                     |
