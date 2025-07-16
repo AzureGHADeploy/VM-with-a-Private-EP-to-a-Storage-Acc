@@ -22,7 +22,7 @@ This project provisions a secure Azure environment using Infrastructure as Code 
 
 ## 🛠️ Features
 
-- ✅ Virtual Network with subnets & NSGs  
+- ✅ Virtual Network with subnets 
 - ✅ Storage Account with **Private Endpoint**  
 - ✅ Private DNS Zone linked to VNet  
 - ✅ Public access disabled for storage  
@@ -76,7 +76,6 @@ The following parameters are used in main.bicep:
 | -------------------- | ----------------------- | -------------------------- |
 | `adminPassword`      | Admin password for VM   | GitHub Secret              |
 | `location`           | Azure region            | `resourceGroup().location` |
-| `storageAccountType` | SKU for Storage Account | `Standard_LRS` (default)   |
 
 
 
@@ -84,19 +83,12 @@ The following parameters are used in main.bicep:
 
 * Storage Account has public access disabled
 
-* Private Endpoint created in the same subnet as the VM or a dedicated subnet
+* Private Endpoint created in a dedicated subnet
 
-* Private DNS Zone (privatelink.blob.core.windows.net) handles name resolution
+* Private DNS Zone handles name resolution
 
 * VM can access Storage Account using private IP internally
 
-## 📡 DNS Validation
-After deployment:
-
-```bash
-nslookup <your-storage-account>.blob.core.windows.net
-```
-> Should resolve to a private IP address like 10.x.x.x.
 
 ## 📜 Cleanup
 To delete all resources:
