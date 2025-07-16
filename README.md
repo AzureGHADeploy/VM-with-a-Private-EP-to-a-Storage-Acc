@@ -23,7 +23,6 @@ This project provisions a secure Azure environment using Infrastructure as Code 
 ## 🛠️ Features
 
 - ✅ Virtual Network with subnets & NSGs  
-- ✅ Ubuntu VM with cloud-init provisioning (NGINX)  
 - ✅ Storage Account with **Private Endpoint**  
 - ✅ Private DNS Zone linked to VNet  
 - ✅ Public access disabled for storage  
@@ -113,9 +112,6 @@ az group delete --name GHActionDeploy --yes --no-wait
 [Private Endpoint Docs](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview)
 
 [GitHub Actions for Azure](https://learn.microsoft.com/en-us/azure/developer/github/)
-
-[cloud-init for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/cloud-init)
-
 
 
 ## 👨‍💻 Author
