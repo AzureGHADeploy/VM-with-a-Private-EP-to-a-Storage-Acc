@@ -66,50 +66,59 @@ jobs:
           resourceGroupName: GHActionDeploy
           template: ./main.bicep
           parameters: adminPassword=${{ secrets.VM_PASSWORD }}
-          deploymentName: PrivateENDP-${{ github.run_number }}
+          deploymentName: PrivateENDP-${{ github.run_number }} 
+```
 
 📦 Bicep Parameters
 The following parameters are used in main.bicep:
 
-Parameter	Description	Source
-adminPassword	Admin password for VM	GitHub Secret
-location	Azure region (inferred from RG)	resourceGroup().location
-storageAccountType	SKU for Storage Account	Standard_LRS (default)
+| Parameter            | Description             | Source                     |
+| -------------------- | ----------------------- | -------------------------- |
+| `adminPassword`      | Admin password for VM   | GitHub Secret              |
+| `location`           | Azure region            | `resourceGroup().location` |
+| `storageAccountType` | SKU for Storage Account | `Standard_LRS` (default)   |
+
+
 
 🌐 Private Networking
-Storage Account has public access disabled
 
-Private Endpoint created in the same subnet as the VM or a dedicated subnet
+* Storage Account has public access disabled
 
-Private DNS Zone (privatelink.blob.core.windows.net) handles name resolution
+* Private Endpoint created in the same subnet as the VM or a dedicated subnet
 
-VM can access Storage Account using private IP internally
+* Private DNS Zone (privatelink.blob.core.windows.net) handles name resolution
+
+* VM can access Storage Account using private IP internally
 
 📡 DNS Validation
 After deployment:
 
-bash
-Copy
-Edit
+```bash
 nslookup <your-storage-account>.blob.core.windows.net
-Should resolve to a private IP address like 10.x.x.x.
+```
+> Should resolve to a private IP address like 10.x.x.x.
 
 📜 Cleanup
 To delete all resources:
 
-bash
-Copy
-Edit
+```bash
 az group delete --name GHActionDeploy --yes --no-wait
+```
+
 📚 Resources
-Bicep Documentation
 
-Private Endpoint Docs
+[Bicep Documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/)
 
-GitHub Actions for Azure
+[Private Endpoint Docs](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview)
 
-cloud-init for Azure VMs
+[GitHub Actions for Azure](https://learn.microsoft.com/en-us/azure/developer/github/)
+
+[cloud-init for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/cloud-init)
+
+
 
 👨‍💻 Author
+
 Amir
+
 AZ-104 Certified | Cloud Infrastructure Enthusiast
