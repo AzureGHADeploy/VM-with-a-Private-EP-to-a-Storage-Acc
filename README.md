@@ -6,6 +6,7 @@ This project provisions a secure Azure environment using Infrastructure as Code 
 
 ## 📁 Project Structure
 
+```md
 ├── .github/workflows/ # GitHub Actions workflow files
 │ └── azure-deploy.yml
 ├── modules/ # Reusable Bicep modules
@@ -15,7 +16,7 @@ This project provisions a secure Azure environment using Infrastructure as Code 
 │ └── dns.bicep # Private DNS Zone
 ├── main.bicep # Main orchestrator Bicep file
 └── README.md # Project documentation (this file)
-
+```
 
 ---
 
@@ -80,7 +81,7 @@ The following parameters are used in main.bicep:
 
 
 
-🌐 Private Networking
+## 🌐 Private Networking
 
 * Storage Account has public access disabled
 
@@ -90,7 +91,7 @@ The following parameters are used in main.bicep:
 
 * VM can access Storage Account using private IP internally
 
-📡 DNS Validation
+## 📡 DNS Validation
 After deployment:
 
 ```bash
@@ -98,14 +99,14 @@ nslookup <your-storage-account>.blob.core.windows.net
 ```
 > Should resolve to a private IP address like 10.x.x.x.
 
-📜 Cleanup
+## 📜 Cleanup
 To delete all resources:
 
 ```bash
 az group delete --name GHActionDeploy --yes --no-wait
 ```
 
-📚 Resources
+## 📚 Resources
 
 [Bicep Documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/)
 
@@ -117,7 +118,7 @@ az group delete --name GHActionDeploy --yes --no-wait
 
 
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Amir
 
