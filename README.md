@@ -106,8 +106,3 @@ az group delete --name GHActionDeploy --yes --no-wait
 [GitHub Actions for Azure](https://learn.microsoft.com/en-us/azure/developer/github/)
 
 
-## 👨‍💻 Author
-
-Amir
-
-AZ-104 Certified | Cloud Infrastructure Enthusiast
